@@ -39,6 +39,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
 /* harmony import */ var _create_user_create_user_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./create-user/create-user.component */ "./src/app/create-user/create-user.component.ts");
 /* harmony import */ var _login_check_guard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./login-check.guard */ "./src/app/login-check.guard.ts");
+/* harmony import */ var _reset_password_reset_password_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./reset-password/reset-password.component */ "./src/app/reset-password/reset-password.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -51,10 +52,14 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var routes = [
     { path: "login",
         component: _login_login_component__WEBPACK_IMPORTED_MODULE_3__["LoginComponent"],
         canActivate: [_login_check_guard__WEBPACK_IMPORTED_MODULE_5__["LoginCheckGuard"]]
+    },
+    { path: "reset",
+        component: _reset_password_reset_password_component__WEBPACK_IMPORTED_MODULE_6__["ResetPasswordComponent"],
     },
     { path: "dashboard",
         component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_2__["DashboardComponent"],
@@ -101,7 +106,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n    <!-- <app-dashboard class = \"container-fluid col\"></app-dashboard> -->\n    <h1 style = \"text-align: center\">{{title}}</h1>\n    <div class = \"row\"> \n      <app-side-bar *ngIf = \"userService.loggedInUser\" id=\"sdivde-out\" class=\"side-nav fixed\" [profilePicUrl] = \"userService.generateImgUrl(userService.loggedInUser.userId)\"></app-side-bar>\n      <div class = \"col\">\n        <router-outlet></router-outlet>\n      </div>\n    </div>\n"
+module.exports = "\n    <!-- <app-dashboard class = \"container-fluid col\"></app-dashboard> -->\n     <!-- The Modal -->\n    <div><h1 style = \"text-align: center; background-color : #9fa0a1\">{{title}}</h1></div>\n    <div class = \"row\"> \n      <app-side-bar  style = \"background-color : #9fa0a1\" *ngIf = \"userService.loggedInUser\" id=\"sdivde-out\" class=\"sidebar fixed\" [profilePicUrl] = \"userService.generateImgUrl(userService.loggedInUser.userId)\"></app-side-bar>\n      <div class = \"col\">\n        <router-outlet></router-outlet>\n      </div>\n    </div>\n"
 
 /***/ }),
 
@@ -170,12 +175,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _side_bar_side_bar_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./side-bar/side-bar.component */ "./src/app/side-bar/side-bar.component.ts");
 /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
 /* harmony import */ var _create_user_create_user_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./create-user/create-user.component */ "./src/app/create-user/create-user.component.ts");
+/* harmony import */ var _reset_password_reset_password_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./reset-password/reset-password.component */ "./src/app/reset-password/reset-password.component.ts");
+/* harmony import */ var _shared_upload_upload_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./shared/upload/upload.component */ "./src/app/shared/upload/upload.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -200,7 +209,9 @@ var AppModule = /** @class */ (function () {
                 _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_8__["DashboardComponent"],
                 _side_bar_side_bar_component__WEBPACK_IMPORTED_MODULE_9__["SideBarComponent"],
                 _login_login_component__WEBPACK_IMPORTED_MODULE_10__["LoginComponent"],
-                _create_user_create_user_component__WEBPACK_IMPORTED_MODULE_11__["CreateUserComponent"]
+                _create_user_create_user_component__WEBPACK_IMPORTED_MODULE_11__["CreateUserComponent"],
+                _reset_password_reset_password_component__WEBPACK_IMPORTED_MODULE_12__["ResetPasswordComponent"],
+                _shared_upload_upload_component__WEBPACK_IMPORTED_MODULE_13__["UploadComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -215,6 +226,27 @@ var AppModule = /** @class */ (function () {
     return AppModule;
 }());
 
+
+
+/***/ }),
+
+/***/ "./src/app/color.enum.ts":
+/*!*******************************!*\
+  !*** ./src/app/color.enum.ts ***!
+  \*******************************/
+/*! exports provided: Color */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Color", function() { return Color; });
+var Color;
+(function (Color) {
+    Color["White"] = "white";
+    Color["LightPink"] = "lightpink";
+    Color["LimeGreen"] = "limegreen";
+    Color["Red"] = "red";
+})(Color || (Color = {}));
 
 
 /***/ }),
@@ -237,7 +269,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <div class=\"card card-register mx-auto mt-5\">\n      <div class=\"card-header\">Create User</div>\n      <div class=\"card-body\">\n        <form>\n          <div class=\"form-group\">\n            <div class=\"form-row\">\n              <div class=\"col-md-6\">\n                <div class=\"form-label-group\">\n                  <input type=\"text\" id=\"firstName\" class=\"form-control\" placeholder=\"First name\" required=\"required\" autofocus=\"autofocus\">\n                  <label for=\"firstName\">First name</label>\n                </div>\n              </div>\n              <div class=\"col-md-6\">\n                <div class=\"form-label-group\">\n                  <input type=\"text\" id=\"lastName\" class=\"form-control\" placeholder=\"Last name\" required=\"required\">\n                  <label for=\"lastName\">Last name</label>\n                </div>\n              </div>\n            </div>\n          </div>\n          <div class=\"form-group\">\n            <div class=\"form-label-group\">\n              <input type=\"email\" id=\"inputEmail\" class=\"form-control\" placeholder=\"Email address\" required=\"required\">\n              <label for=\"inputEmail\">Email address</label>\n            </div>\n          </div>\n          <a class=\"btn btn-primary btn-block\" href=\"login.html\">Register</a>\n        </form>\n      </div>\n    </div>\n  </div>\n"
+module.exports = "<div>\n    <div class=\"cards mx-auto mt-5\">\n        <div class=\"card-header\"> <h2>{{pageTitle}}</h2></div>\n        <div class=\"card-body\">\n    <div class=\"card card-register mx-auto mt-5\">\n      <!-- <div class=\"card-header\">Create User</div> -->\n      <div class=\"card-body\">\n        <form>\n          <div class=\"form-group\">\n            <div class=\"form-row\">\n              <div class=\"col-md-6\">\n                <div class=\"form-label-group\">\n                  <input type=\"text\" id=\"firstName\" class=\"form-control\" placeholder=\"First name\" required=\"required\" autofocus=\"autofocus\">\n                  <label for=\"firstName\">First name</label>\n                </div>\n              </div>\n              <div class=\"col-md-6\">\n                <div class=\"form-label-group\">\n                  <input type=\"text\" id=\"lastName\" class=\"form-control\" placeholder=\"Last name\" required=\"required\">\n                  <label for=\"lastName\">Last name</label>\n                </div>\n              </div>\n            </div>\n          </div>\n          <div class=\"form-group\">\n            <div class=\"form-label-group\">\n              <input type=\"email\" id=\"inputEmail\" class=\"form-control\" placeholder=\"Email address\" required=\"required\">\n              <label for=\"inputEmail\">Email address</label>\n            </div>\n          </div>\n          <a class=\"btn btn-primary btn-block\" >Create</a>\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n</div>\n"
 
 /***/ }),
 
@@ -264,6 +296,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var CreateUserComponent = /** @class */ (function () {
     function CreateUserComponent() {
+        this.pageTitle = "Create User";
     }
     CreateUserComponent.prototype.ngOnInit = function () {
     };
@@ -300,7 +333,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <div class=\"cards mx-auto mt-5\">\n    <div class=\"card-header\"> <h2>{{pageTitle}}</h2></div>\n    <div class=\"card-body\">\n      <h5>Logged in as {{loggedInUser.firstName}}</h5>\n        <app-user-table *ngIf = \"this.loggedInUser.department.departmentId !== 1 && this.loggedInUser.department.departmentId !== 1\" (load) = \"updateCvTable($event)\" [loggedInUserDepartment] = \"loggedInUser.department.departmentId\"></app-user-table>\n        <app-cv-table [userId] = \"userToSearch\" [userName] = \"userName\"></app-cv-table>\n    </div>\n  </div>\n</div>"
+module.exports = "<div>\n  <div class=\"cards mx-auto mt-5\">\n    <div class=\"card-header\"> <h2>{{pageTitle}}</h2>\n      <h5>Logged in as {{loggedInUser.department.role}} {{loggedInUser.firstName}}</h5>\n    </div>\n    <div class=\"card-body\">\n      <div *ngIf = \"this.loggedInUser.department.departmentId !== 1 && this.loggedInUser.department.departmentId !== 6\" > \n          <app-user-table (load) = \"updateCvTable($event)\" [loggedInUserDepartment] = \"loggedInUser.department.departmentId\"></app-user-table>\n      </div>\n      <div *ngIf = \"this.loggedInUser.department.departmentId === 1 || this.loggedInUser.department.departmentId === 6\">\n        <app-upload></app-upload>\n      </div>\n        <app-cv-table [userId] = \"userToSearch\" [userName] = \"userName\"></app-cv-table>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -343,7 +376,7 @@ var DashboardComponent = /** @class */ (function () {
     DashboardComponent.prototype.ngOnInit = function () {
         this.loggedInUser = this.userService.getLoggedInUser();
         console.log("loggedin user:" + this.loggedInUser);
-        if (this.loggedInUser.department.departmentId !== 1 && this.loggedInUser.department.departmentId !== 1) {
+        if (this.loggedInUser.department.departmentId !== 1 && this.loggedInUser.department.departmentId !== 6) {
             this.userName = "User";
         }
         else {
@@ -379,6 +412,29 @@ var DashboardComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/global-variables.enum.ts":
+/*!******************************************!*\
+  !*** ./src/app/global-variables.enum.ts ***!
+  \******************************************/
+/*! exports provided: GlobalVariables */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GlobalVariables", function() { return GlobalVariables; });
+var GlobalVariables;
+(function (GlobalVariables) {
+    GlobalVariables["Api"] = "https://qacvmanager.azurewebsites.net/api";
+    GlobalVariables["Confirm"] = "confirm";
+    GlobalVariables["Checking"] = "checking";
+    GlobalVariables["Email"] = "inputEmail";
+    GlobalVariables["Password"] = "inputPassword";
+    GlobalVariables["LoadingGif"] = "assets/Images/loading.gif";
+})(GlobalVariables || (GlobalVariables = {}));
+
+
+/***/ }),
+
 /***/ "./src/app/login-check.guard.ts":
 /*!**************************************!*\
   !*** ./src/app/login-check.guard.ts ***!
@@ -410,7 +466,7 @@ var LoginCheckGuard = /** @class */ (function () {
         this.router = router;
     }
     LoginCheckGuard.prototype.canActivate = function (next, state) {
-        if (!this.userService.loggedInUser && state.url !== "/login") {
+        if (!this.userService.loggedInUser && state.url !== "/login" && state.url !== "/reset") {
             this.router.navigate(["/login"]);
             return false;
         }
@@ -453,7 +509,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n    <div class=\"card card-login mx-auto mt-5\">\n      <div class=\"card-header\">Login</div>\n      <div class=\"card-body\">\n        <form >\n          <div class=\"form-group\">\n            <div class=\"form-label-group\">\n              <input [(ngModel)] = \"email\" name = \"email\"  type=\"email\" id=\"inputEmail\" class=\"form-control\" placeholder=\"Email address\" required=\"required\" autofocus=\"autofocus\">\n              <label for=\"inputEmail\">Email address</label>\n            </div>\n          </div>\n          <div class=\"form-group\">\n            <div class=\"form-label-group\">\n              <input [(ngModel)] = \"password\" name = \"password\"  type=\"password\" id=\"inputPassword\" class=\"form-control\" placeholder=\"Password\" required=\"required\">\n              <label for=\"inputPassword\">Password</label>\n            </div>\n          </div>\n          <div class=\"form-group\">\n            <div class=\"checkbox\">\n              <label>\n                <input type=\"checkbox\" value=\"remember-me\">\n                Remember Password\n              </label>\n            </div>\n          </div>\n          <a class=\"btn btn-primary btn-block\" (click) = \" tryLogIn()\">Login</a>\n        </form>\n        <div class=\"text-center\">\n          <a class=\"d-block small\" href=\"forgot-password.html\">Forgot Password?</a>\n        </div>\n      </div>\n    </div>\n  </div>\n  <!-- <div class=\"container\">\n      <div class=\"card card-login mx-auto mt-5\">\n        <div class=\"card-header\">Reset Password</div>\n        <div class=\"card-body\">\n          <div class=\"text-center mb-4\">\n            <h4>Forgot your password?</h4>\n            <p>Enter your email address and we will send you instructions on how to reset your password.</p>\n          </div>\n          <form>\n            <div class=\"form-group\">\n              <div class=\"form-label-group\">\n                <input type=\"email\" id=\"inputEmail\" class=\"form-control\" placeholder=\"Enter email address\" required=\"required\" autofocus=\"autofocus\">\n                <label for=\"inputEmail\">Enter email address</label>\n              </div>\n            </div>\n            <a class=\"btn btn-primary btn-block\" href=\"login.html\">Reset Password</a>\n          </form>\n          <div class=\"text-center\">\n            <a class=\"d-block small mt-3\" href=\"register.html\">Register an Account</a>\n            <a class=\"d-block small\" href=\"login.html\">Login Page</a>\n          </div>\n        </div>\n      </div>\n    </div> -->\n"
+module.exports = "\n<div class=\"container\">\n    <div class=\"card card-login mx-auto mt-5\">\n      <div class=\"card-header\">Login</div>\n      <div class=\"card-body\">\n        <form >\n          <div class=\"form-group\">\n            <div class=\"form-label-group\">\n              <input [(ngModel)] = \"email\" name = \"email\"  type=\"email\" id=\"inputEmail\" class=\"form-control\" placeholder=\"Enter Email address\" required=\"required\" autofocus=\"autofocus\">\n              <label for=\"inputEmail\">Email address</label>\n            </div>\n          </div>\n          <div class=\"form-group\">\n            <div class=\"form-label-group\">\n              <input [(ngModel)] = \"password\" name = \"password\"  type=\"password\" id=\"inputPassword\" class=\"form-control\" placeholder=\"Enter Password\" required=\"required\">\n              <label for=\"inputPassword\">Password</label>\n            </div>\n          </div>\n          <div class=\"form-group row\">\n            <div class=\"checkbox col\">\n              <label>\n                <input type=\"checkbox\" value=\"remember-me\">\n                Remember Password\n              </label>\n            </div>\n              <img *ngIf = \"userService.checking === true\" id = \"checking\" style = \"height: 50px; width : 50px\" class=\"img-responsive\" src = \"assets/Images/loading.gif\"/>\n          </div>\n          <a class=\"btn btn-primary btn-block\" (click) = \" tryLogIn()\">Login</a>\n        </form>\n        <div class=\"text-center\">\n          <a class=\"d-block small\" [routerLink]= \"['/reset']\">Forgot Password?</a>\n        </div>\n      </div>\n    </div>\n    <!-- <button id=\"myBtn\">Open Modal</button> -->\n    <div id=\"myModal\" class=\"modal\">\n    \n        <div class=\"modal-content\">\n            <div class=\"modal-header\">\n              <span class=\"close\">&times;</span>\n              <h2>Unrecognised Details</h2>\n            </div>\n            <div class=\"modal-body\">\n              <p>Invalid email or password.</p>\n              <p>Please try again.</p>\n            </div>\n            <!-- <div class=\"modal-footer\">\n              <h3>Modal Footer</h3>\n            </div> -->\n          </div>\n    \n    </div>\n  </div>\n"
 
 /***/ }),
 
@@ -471,6 +527,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var crypto_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! crypto-js */ "./node_modules/crypto-js/index.js");
 /* harmony import */ var crypto_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(crypto_js__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _shared_user_table_users_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/user-table/users.service */ "./src/app/shared/user-table/users.service.ts");
+/* harmony import */ var _color_enum__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../color.enum */ "./src/app/color.enum.ts");
+/* harmony import */ var _global_variables_enum__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../global-variables.enum */ "./src/app/global-variables.enum.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -483,27 +541,147 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+
+//import {logo} from 'src/assets/Images/loading.gif';
 var LoginComponent = /** @class */ (function () {
     function LoginComponent(userService) {
         this.userService = userService;
     }
+    Object.defineProperty(LoginComponent.prototype, "email", {
+        get: function () {
+            return this._email;
+        },
+        set: function (value) {
+            this.userService.updateElement(_global_variables_enum__WEBPACK_IMPORTED_MODULE_4__["GlobalVariables"].Email, _color_enum__WEBPACK_IMPORTED_MODULE_3__["Color"].White);
+            this._email = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(LoginComponent.prototype, "password", {
+        get: function () {
+            return this._password;
+        },
+        set: function (value) {
+            this.userService.updateElement(_global_variables_enum__WEBPACK_IMPORTED_MODULE_4__["GlobalVariables"].Password, _color_enum__WEBPACK_IMPORTED_MODULE_3__["Color"].White);
+            this._password = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     LoginComponent.prototype.ngOnInit = function () {
     };
     LoginComponent.prototype.tryLogIn = function () {
-        var hashedPass = Object(crypto_js__WEBPACK_IMPORTED_MODULE_1__["MD5"])(this.password);
-        this.userService.tryLoggIn(this.email, hashedPass.toString());
-        console.log("email: ", this.email);
-        console.log("password: " + hashedPass);
+        if (!this.email) {
+            this.userService.updateElement(_global_variables_enum__WEBPACK_IMPORTED_MODULE_4__["GlobalVariables"].Email, _color_enum__WEBPACK_IMPORTED_MODULE_3__["Color"].LightPink);
+        }
+        else if (!this.password) {
+            this.userService.updateElement(_global_variables_enum__WEBPACK_IMPORTED_MODULE_4__["GlobalVariables"].Password, _color_enum__WEBPACK_IMPORTED_MODULE_3__["Color"].LightPink);
+        }
+        else {
+            var hashedPass = Object(crypto_js__WEBPACK_IMPORTED_MODULE_1__["MD5"])(this.password);
+            this.userService.tryLoggIn(this.email, hashedPass.toString());
+        }
     };
     LoginComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-login',
             template: __webpack_require__(/*! ./login.component.html */ "./src/app/login/login.component.html"),
-            styles: [__webpack_require__(/*! ./login.component.css */ "./src/app/login/login.component.css")]
+            styles: [__webpack_require__(/*! ./login.component.css */ "./src/app/login/login.component.css")],
         }),
         __metadata("design:paramtypes", [_shared_user_table_users_service__WEBPACK_IMPORTED_MODULE_2__["UserService"]])
     ], LoginComponent);
     return LoginComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/reset-password/reset-password.component.css":
+/*!*************************************************************!*\
+  !*** ./src/app/reset-password/reset-password.component.css ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3Jlc2V0LXBhc3N3b3JkL3Jlc2V0LXBhc3N3b3JkLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/reset-password/reset-password.component.html":
+/*!**************************************************************!*\
+  !*** ./src/app/reset-password/reset-password.component.html ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\n      <div class=\"card card-login mx-auto mt-5\">\n        <div class=\"card-header\">Reset Password</div>\n        <div class=\"card-body\">\n          <div>\n            <h4>Forgot your password?</h4>\n            <p>Enter your email address and we will send you instructions on how to reset your password.</p>\n          </div>\n          <form>\n            <div class=\"form-group\">\n              <div class=\"form-label-group\">\n                <input [(ngModel)] = \"email\" name = \"email\"  type=\"email\" id=\"inputEmail\" class=\"form-control\" placeholder=\"Enter email address\" required=\"required\" autofocus=\"autofocus\">\n                <label for=\"inputEmail\">Enter email address</label>\n              </div>\n            </div>\n            <a class=\"btn btn-primary btn-block\" (click) = \" tryReset()\">Reset Password</a>\n          </form>\n          <div class=\"text-center\">\n            <a class=\"d-block small\" [routerLink] = \"['/create']\">Login Page</a>\n          </div>\n        </div>\n      </div>\n    </div>"
+
+/***/ }),
+
+/***/ "./src/app/reset-password/reset-password.component.ts":
+/*!************************************************************!*\
+  !*** ./src/app/reset-password/reset-password.component.ts ***!
+  \************************************************************/
+/*! exports provided: ResetPasswordComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ResetPasswordComponent", function() { return ResetPasswordComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _shared_user_table_users_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shared/user-table/users.service */ "./src/app/shared/user-table/users.service.ts");
+/* harmony import */ var _global_variables_enum__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../global-variables.enum */ "./src/app/global-variables.enum.ts");
+/* harmony import */ var _color_enum__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../color.enum */ "./src/app/color.enum.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var ResetPasswordComponent = /** @class */ (function () {
+    function ResetPasswordComponent(userService) {
+        this.userService = userService;
+    }
+    Object.defineProperty(ResetPasswordComponent.prototype, "email", {
+        get: function () {
+            return this._email;
+        },
+        set: function (value) {
+            this.userService.updateElement(_global_variables_enum__WEBPACK_IMPORTED_MODULE_2__["GlobalVariables"].Email, _color_enum__WEBPACK_IMPORTED_MODULE_3__["Color"].White);
+            this._email = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ResetPasswordComponent.prototype.ngOnInit = function () {
+    };
+    ResetPasswordComponent.prototype.tryReset = function () {
+        if (!this.email) {
+            this.userService.updateElement(_global_variables_enum__WEBPACK_IMPORTED_MODULE_2__["GlobalVariables"].Email, _color_enum__WEBPACK_IMPORTED_MODULE_3__["Color"].LightPink);
+        }
+        else {
+            console.log("email: ", this.email);
+        }
+    };
+    ResetPasswordComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-reset-password',
+            template: __webpack_require__(/*! ./reset-password.component.html */ "./src/app/reset-password/reset-password.component.html"),
+            styles: [__webpack_require__(/*! ./reset-password.component.css */ "./src/app/reset-password/reset-password.component.css")]
+        }),
+        __metadata("design:paramtypes", [_shared_user_table_users_service__WEBPACK_IMPORTED_MODULE_1__["UserService"]])
+    ], ResetPasswordComponent);
+    return ResetPasswordComponent;
 }());
 
 
@@ -650,6 +828,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CvsService", function() { return CvsService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var src_app_global_variables_enum__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/global-variables.enum */ "./src/app/global-variables.enum.ts");
+/* harmony import */ var _user_table_users_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../user-table/users.service */ "./src/app/shared/user-table/users.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -661,28 +841,124 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
+
 var CvsService = /** @class */ (function () {
-    function CvsService(httpClient) {
+    function CvsService(httpClient, userService) {
         this.httpClient = httpClient;
-        this.cvsUrl = "https://qacvmanager.azurewebsites.net/api/cv";
+        this.userService = userService;
+        this.baseUrl = src_app_global_variables_enum__WEBPACK_IMPORTED_MODULE_2__["GlobalVariables"].Api;
         this.reload = false;
     }
     CvsService.prototype.getAllCvs = function () {
-        return this.httpClient.get(this.cvsUrl);
+        return this.httpClient.get(this.baseUrl + "/cv");
     };
     CvsService.prototype.deleteCv = function (cvId) {
         var _this = this;
         console.log("deleting");
-        this.httpClient.get(this.cvsUrl + "/" + cvId + "/delete").toPromise()
+        this.httpClient.get(this.baseUrl + "/cv/" + cvId + "/delete").toPromise()
             .then(function () { console.log("deleted!"); _this.reload = true; });
+    };
+    CvsService.prototype.upload = function (isCv) {
+        var _this = this;
+        this.fileLoc = document.getElementById("file");
+        var formData = new FormData();
+        console.log("File : " + this.fileLoc.files[0]);
+        formData.append("file", this.fileLoc.files[0]);
+        //    https://cors-anywhere.herokuapp.com/
+        if (isCv) {
+            this.httpClient.post("https://cors-anywhere.herokuapp.com/" + this.baseUrl + "/user/" + this.userService.loggedInUser.userId + "/upload/" + this.fileLoc.files[0].name, formData)
+                .subscribe(function (cv) {
+                if (cv) {
+                    console.log("ID: " + cv.cvId);
+                    console.log("uploaded!");
+                    _this.fileLoc.value = null;
+                    _this.reload = true;
+                }
+            }, function (error) {
+                console.log("Not uploaded!");
+            });
+        }
+        // .toPromise()
+        // .then(() => {console.log("deleted!"); this.reload = true;});
     };
     CvsService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: "root"
         }),
-        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"], _user_table_users_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]])
     ], CvsService);
     return CvsService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/shared/upload/upload.component.css":
+/*!****************************************************!*\
+  !*** ./src/app/shared/upload/upload.component.css ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NoYXJlZC91cGxvYWQvdXBsb2FkLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/shared/upload/upload.component.html":
+/*!*****************************************************!*\
+  !*** ./src/app/shared/upload/upload.component.html ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class = \"row\" >\n  <input class = \"col\" id = \"file\" type=\"file\" name=\"upload\"  accept={{fileTypes}}>\n  <button class=\"btn btn-primary col\"  (click) = \"cvsService.upload(true)\">Upload</button>\n</div>\n<!-- accept=\"image/*\" -->"
+
+/***/ }),
+
+/***/ "./src/app/shared/upload/upload.component.ts":
+/*!***************************************************!*\
+  !*** ./src/app/shared/upload/upload.component.ts ***!
+  \***************************************************/
+/*! exports provided: UploadComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UploadComponent", function() { return UploadComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _cv_table_cvs_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../cv-table/cvs.service */ "./src/app/shared/cv-table/cvs.service.ts");
+/* harmony import */ var _user_table_users_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../user-table/users.service */ "./src/app/shared/user-table/users.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var UploadComponent = /** @class */ (function () {
+    function UploadComponent(cvsService, userService) {
+        this.cvsService = cvsService;
+        this.userService = userService;
+        this.fileTypes = "application/pdf,.doc,.docx";
+    }
+    UploadComponent.prototype.ngOnInit = function () {
+    };
+    UploadComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-upload',
+            template: __webpack_require__(/*! ./upload.component.html */ "./src/app/shared/upload/upload.component.html"),
+            styles: [__webpack_require__(/*! ./upload.component.css */ "./src/app/shared/upload/upload.component.css")]
+        }),
+        __metadata("design:paramtypes", [_cv_table_cvs_service__WEBPACK_IMPORTED_MODULE_1__["CvsService"], _user_table_users_service__WEBPACK_IMPORTED_MODULE_2__["UserService"]])
+    ], UploadComponent);
+    return UploadComponent;
 }());
 
 
@@ -809,6 +1085,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var src_app_global_variables_enum__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/global-variables.enum */ "./src/app/global-variables.enum.ts");
+/* harmony import */ var src_app_color_enum__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/color.enum */ "./src/app/color.enum.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -821,39 +1099,50 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+
 var UserService = /** @class */ (function () {
     function UserService(userRequest, router) {
         this.userRequest = userRequest;
         this.router = router;
-        this.baseUrl = "https://qacvmanager.azurewebsites.net/api/";
+        this.baseUrl = src_app_global_variables_enum__WEBPACK_IMPORTED_MODULE_3__["GlobalVariables"].Api;
     }
     UserService.prototype.getLoggedInUser = function () {
         return this.loggedInUser;
     };
     UserService.prototype.generateImgUrl = function (userId) {
-        return (this.baseUrl + "user/" + userId + "/picture/download");
+        return (this.baseUrl + "/user/" + userId + "/picture/download");
     };
     UserService.prototype.findUsers = function (value, lastName) {
-        return this.userRequest.get(this.baseUrl + "findbyname/" + value + "&" + lastName);
+        return this.userRequest.get(this.baseUrl + "/findbyname/" + value + "&" + lastName);
     };
     UserService.prototype.defaultImage = function (imgId) {
         document.getElementById(imgId).setAttribute("src", "https://image.flaticon.com/icons/svg/149/149071.svg");
     };
     UserService.prototype.tryLoggIn = function (email, password) {
         var _this = this;
-        this.userRequest.get(this.baseUrl + "login/" + email + "&" + password)
+        this.checking = true;
+        //this.updateElement(GlobalVariables.Confirm, Color.LimeGreen);
+        this.userRequest.get(this.baseUrl + "/login/" + email + "&" + password)
             .subscribe(function (user) {
             if (user) {
                 _this.loggedInUser = user[0];
                 console.log("user loggedin: " + user[0].firstName);
                 console.log("try: " + _this.loggedInUser.firstName);
                 _this.router.navigate(["/dashboard"]);
-                return true;
+                //this.updateElement(GlobalVariables.Confirm, Color.LimeGreen);
+                _this.checking = false;
             }
-            else {
-                return false;
-            }
+        }, function (error) {
+            _this.updateElement(src_app_global_variables_enum__WEBPACK_IMPORTED_MODULE_3__["GlobalVariables"].Email, src_app_color_enum__WEBPACK_IMPORTED_MODULE_4__["Color"].LightPink);
+            _this.checking = false;
+            document.getElementById('myModal').style.display = "block";
         });
+    };
+    UserService.prototype.updateElement = function (elementId, colour) {
+        var element = document.getElementById(elementId);
+        element.setAttribute("style", "background-color : " + colour);
+        element.focus();
     };
     UserService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({ providedIn: "root" }),
@@ -884,7 +1173,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n     <!-- Sidebar -->\n     <ul class=\"sidebar navbar-nav fixed \">\n        <li class=\"logo-wrapper waves-divght\">\n            <a  class = \"navbar-brand\" [routerLink] = \"['/dashboard']\"><img [src] =\"userService.generateImgUrl(userService.loggedInUser.userId)\" (error) = userService.defaultImage(userService.loggedInUser.userId) class=\"img-fluid flex-center\" style = \"width: 100px\"></a>\n          </li>\n        <li class=\"nav-item active\">\n          <a class = \"btn btn-block\" [routerLink] = \"['/dashboard']\">\n            <i class=\"fas fa-fw fa-tachometer-alt\"></i>\n            <span>Dashboard</span>\n          </a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"btn btn-block\" [routerLink] = \"['/update']\">\n            <i class=\"fas fa-fw fa-chart-area\"></i>\n            <span>Update Profile</span></a>\n        </li>\n        <li class=\"nav-item\" *ngIf = \"this.userService.loggedInUser.department.departmentId !== 1 && this.userService.loggedInUser.department.departmentId !== 1\">\n          <a class=\"btn btn-block\" [routerLink] = \"['/create']\">\n            <i class=\"fas fa-fw fa-table\"></i>\n            <span>Create User</span></a>\n        </li>\n        <li class=\"nav-item\" >\n            <a class=\"btn btn-block\" href = \"https://anildesanto.github.io/QACVSAngularVersionFrontEnd/\">\n              <i class=\"fas fa-fw fa-table\"></i>\n              <span>Log Out</span></a>\n          </li>\n      </ul>"
+module.exports = "\n     <!-- Sidebar -->\n     <ul>\n        <div class=\"logo-wrapper waves-divght\">\n            <a  class = \"navbar-brand\" [routerLink] = \"['/dashboard']\">\n              <img [id] = \"userService.loggedInUser.userId\"  [src] = \"userService.generateImgUrl(userService.loggedInUser.userId)\" (error) = userService.defaultImage(userService.loggedInUser.userId) class=\"img-fluid flex-center\" style = \"width: 100px\">\n            </a>\n          </div>\n        <div class=\"nav-item active\">\n          <a class = \"btn btn-block\" [routerLink] = \"['/dashboard']\">\n            <i class=\"fas fa-fw fa-tachometer-alt\"></i>\n            <span>Dashboard</span>\n          </a>\n        </div>\n        <div class=\"nav-item\">\n          <a class=\"btn btn-block\" [routerLink] = \"['/update']\">\n            <i class=\"fas fa-fw fa-chart-area\"></i>\n            <span>Update Profile</span></a>\n        </div>\n        <div class=\"nav-item\" *ngIf = \"this.userService.loggedInUser.department.departmentId !== 1 && this.userService.loggedInUser.department.departmentId !== 6\">\n          <a class=\"btn btn-block\" [routerLink] = \"['/create']\">\n            <i class=\"fas fa-fw fa-table\"></i>\n            <span>Create User</span></a>\n        </div>\n        <div class=\"nav-item\" >\n            <a class=\"btn btn-block\" (cdivck) = \"logOut()\">\n              <i class=\"fas fa-fw fa-table\"></i>\n              <span>Log Out</span></a>\n          </div>\n      </ul>"
 
 /***/ }),
 
@@ -900,6 +1189,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SideBarComponent", function() { return SideBarComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _shared_user_table_users_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shared/user-table/users.service */ "./src/app/shared/user-table/users.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -911,10 +1201,16 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var SideBarComponent = /** @class */ (function () {
-    function SideBarComponent(userService) {
+    function SideBarComponent(userService, router) {
         this.userService = userService;
+        this.router = router;
     }
+    SideBarComponent.prototype.logOut = function () {
+        this.userService.loggedInUser = null;
+        this.router.navigate(["/login"]);
+    };
     SideBarComponent.prototype.ngOnInit = function () {
     };
     __decorate([
@@ -927,7 +1223,7 @@ var SideBarComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./side-bar.component.html */ "./src/app/side-bar/side-bar.component.html"),
             styles: [__webpack_require__(/*! ./side-bar.component.css */ "./src/app/side-bar/side-bar.component.css")]
         }),
-        __metadata("design:paramtypes", [_shared_user_table_users_service__WEBPACK_IMPORTED_MODULE_1__["UserService"]])
+        __metadata("design:paramtypes", [_shared_user_table_users_service__WEBPACK_IMPORTED_MODULE_1__["UserService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], SideBarComponent);
     return SideBarComponent;
 }());
